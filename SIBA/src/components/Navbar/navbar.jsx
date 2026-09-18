@@ -63,9 +63,9 @@ const navItems = [
           {
             label: "PhD. Electrical Engineering",
             children: [
-              { label: "Up to Batch 2024", to: "/" },
-              { label: "For Batch 2025", to: "/" },
-              { label: "For Batch 2026 and onwards", to: "/" },
+              { label: "Up to Batch 2024", to: "/academics/postgraduate/phd-electrical-engineering/upto-2024" },
+              { label: "For Batch 2025", to: "/academics/postgraduate/phd-electrical-engineering/batch-2025" },
+              { label: "For Batch 2026 and onwards", to: "/academics/postgraduate/phd-electrical-engineering/batch-2026-and-onwards" },
             ],
           },
         ],
@@ -418,9 +418,9 @@ export default function Navbar() {
                                 <p className="text-sm font-semibold text-slate-700">PhD. Electrical Engineering</p>
                                 <div className="mt-1 space-y-0.5">
                                   {[
-                                    ["Up to Batch 2024", "/"],
-                                    ["Up to Batch 2025", "/"],
-                                    ["From Batch 2026 onwards", "/"],
+                                    ["Up to Batch 2024", "/academics/postgraduate/phd-electrical-engineering/upto-2024"],
+                                    ["Up to Batch 2025", "/academics/postgraduate/phd-electrical-engineering/batch-2025"],
+                                    ["From Batch 2026 onwards", "/academics/postgraduate/phd-electrical-engineering/batch-2026-and-onwards"],
                                   ].map(([label, to]) => (
                                     <Link key={label} to={to} onClick={closeMobileMenu} className="block rounded-lg px-3 py-2 text-[13px] text-slate-600 transition hover:bg-slate-50 hover:text-[#0a2a5e]">
                                       {label}
