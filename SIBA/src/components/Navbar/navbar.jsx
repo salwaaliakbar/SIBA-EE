@@ -74,6 +74,13 @@ const navItems = [
   },
   {
     label: "Admissions",
+    dropdown: [
+      {
+        label: "Admission Policy (PDF)",
+        to: "https://ee.iba-suk.edu.pk/downloads/SIBAU_Admispolicy-July%2014%20%202023.pdf",
+        external: true,
+      },
+    ],
   },
   {
     label: "Research",
@@ -100,9 +107,6 @@ const navItems = [
       "Students Achievements",
     ],
   },
-  {
-    label: "Career",
-  },
    {
     label: "Contact",
   },
@@ -122,12 +126,16 @@ const aboutSectionLinks = {
   "Chairman's Message": "/about/chairman-message",
 };
 
+const researchSectionLinks = {
+  "Final Year Projects": "/research/final-year-projects",
+};
+
 const getItemLabel = (item) => (typeof item === "string" ? item : item.label);
 
 const getItemPath = (item) => {
   if (typeof item !== "string") return item.to;
 
-  return aboutSectionLinks[item] || "/";
+  return aboutSectionLinks[item] || researchSectionLinks[item] || "/";
 };
 
 export default function Navbar() {
@@ -200,13 +208,18 @@ export default function Navbar() {
       );
     }
 
-    return (
-      <Link
-        key={itemKey}
-        to={getItemPath(item)}
-        onClick={closeMobileMenu}
-        className="group flex items-center rounded-lg px-3 py-2.5 text-[13px] normal-case tracking-normal text-slate-600 transition-all duration-150 hover:bg-slate-50 hover:pl-4 hover:text-[#0a2a5e]"
-      >
+    const linkProps = {
+      key: itemKey,
+      className: "group flex items-center rounded-lg px-3 py-2.5 text-[13px] normal-case tracking-normal text-slate-600 transition-all duration-150 hover:bg-slate-50 hover:pl-4 hover:text-[#0a2a5e]",
+      onClick: closeMobileMenu,
+    };
+
+    return item.external ? (
+      <a {...linkProps} href={item.to} target="_blank" rel="noreferrer">
+        <span>{label}</span>
+      </a>
+    ) : (
+      <Link {...linkProps} to={getItemPath(item)}>
         <span>{label}</span>
       </Link>
     );
@@ -239,13 +252,18 @@ export default function Navbar() {
       );
     }
 
-    return (
-      <Link
-        key={itemKey}
-        to={getItemPath(item)}
-        onClick={closeMobileMenu}
-        className="block rounded-lg px-3 py-2.5 text-sm normal-case tracking-normal text-blue-100/70 transition hover:bg-white/10 hover:text-white"
-      >
+    const linkProps = {
+      key: itemKey,
+      className: "block rounded-lg px-3 py-2.5 text-sm normal-case tracking-normal text-blue-100/70 transition hover:bg-white/10 hover:text-white",
+      onClick: closeMobileMenu,
+    };
+
+    return item.external ? (
+      <a {...linkProps} href={item.to} target="_blank" rel="noreferrer">
+        {label}
+      </a>
+    ) : (
+      <Link {...linkProps} to={getItemPath(item)}>
         {label}
       </Link>
     );

@@ -15,6 +15,7 @@ import MEElectronicCommunicationOnward from "../components/Academics/ME_Electron
 import PhDElectricalBatch2025 from "../components/Academics/PhD_Electrical/Batch2025.jsx";
 import PhDElectricalBatch2026Onward from "../components/Academics/PhD_Electrical/Batch2026&Onward.jsx";
 import PhDElectricalUpto2024 from "../components/Academics/PhD_Electrical/Upto2024.jsx";
+import FYPs from "../components/Research/FYPs.jsx";
 
 export default function AppRoutes() {
   return (
@@ -25,6 +26,7 @@ export default function AppRoutes() {
       <Route path="/about/peos-plos" element={<PeoPlo />} />
       <Route path="/about/chairman-message" element={<ChairmanMessage />} />
       <Route path="/contact" element={<ContactUs />} />
+      <Route path="/research/final-year-projects" element={<FYPs />} />
       <Route path="/academics/undergraduate/be-electrical-engineering" element={<BESchema />} />
       <Route path="/academics/undergraduate/be-electrical-engineering/course-schema" element={<BESchema />} />
       <Route path="/academics/lab-infrastructure" element={<LabInfrastructure />} />
