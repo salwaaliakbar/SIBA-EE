@@ -4,6 +4,7 @@ import VisionMission from "../components/About/Vision&Mission.jsx";
 import AboutDepartment from "../components/About/AboutDep.jsx";
 import PeoPlo from "../components/About/PeoPlo.jsx";
 import ChairmanMessage from "../components/About/ChairmanMessage.jsx";
+import FacultyStaff from "../components/About/FacultyStaff.jsx";
 import ContactUs from "../pages/ContactUs.jsx";
 import BESchema from "../components/Academics/BESchema.jsx";
 import LabInfrastructure from "../components/Academics/LabInfrastructure.jsx";
@@ -25,6 +26,7 @@ export default function AppRoutes() {
       <Route path="/about/about-department" element={<AboutDepartment />} />
       <Route path="/about/peos-plos" element={<PeoPlo />} />
       <Route path="/about/chairman-message" element={<ChairmanMessage />} />
+      <Route path="/about/faculty-staff" element={<FacultyStaff />} />
       <Route path="/contact" element={<ContactUs />} />
       <Route path="/research/final-year-projects" element={<FYPs />} />
       <Route path="/academics/undergraduate/be-electrical-engineering" element={<BESchema />} />

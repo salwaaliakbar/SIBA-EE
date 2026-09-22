@@ -1,67 +1,8 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BriefcaseBusiness, FlaskConical, Wrench } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Reveal from "../shared/reveal.jsx";
-import saeedImg from "../../assets/faculty/saeed.jpg";
-import sharjeelImg from "../../assets/faculty/sharjeel.jpg";
-import abdulQadirImg from "../../assets/faculty/abdul-qadir.jpg";
-import madadImg from "../../assets/faculty/madad.jpg";
-import fareedImg from "../../assets/faculty/fareed.jpg";
-import yameenImg from "../../assets/faculty/yameen.jpg";
-import unnamedStaffImg from "../../assets/staff/unnamed.png";
-import nadirImg from "../../assets/staff/nadir.jpg";
-import aizazImg from "../../assets/staff/aizaz.png";
-import veerBhanImg from "../../assets/staff/veer-bhan.jpg";
-import abdulMajeedImg from "../../assets/staff/abdul-majeed.jpg";
-
-const faculty = [
-  {
-    name: "Dr. Saeed Ahmed Khan",
-    title: "Associate Professor",
-    subtitle: "Dean, Faculty of Engineering & Technology",
-    image: saeedImg,
-  },
-  {
-    name: "Dr. Sharjeel Afridi",
-    title: "Associate Professor",
-    subtitle: "Chairman, Electrical Engineering Department",
-    image: sharjeelImg,
-  },
-  {
-    name: "Dr. Abdul Qadir",
-    title: "Professor",
-    subtitle: "PVC, Kandhkot Campus",
-    image: abdulQadirImg,
-  },
-  {
-    name: "Engr. Prof. Dr. Madad Ali Shah",
-    title: "Professor",
-    subtitle: "",
-    image: madadImg,
-  },
-  {
-    name: "Dr. Fareed Ahmed Mangi",
-    title: "Professor",
-    subtitle: "",
-    image: fareedImg,
-  },
-  {
-    name: "Dr. Muhammad Yameen Sindhu",
-    title: "Associate Professor",
-    subtitle: "",
-    image: yameenImg,
-  },
-];
-
-const staff = [
-  { name: "Tufail Ahmed Soomro", role: "Assistant to Chairman", icon: BriefcaseBusiness, image: unnamedStaffImg },
-  { name: "Kainat Soomro", role: "OBE Coordinator", icon: BriefcaseBusiness, image: unnamedStaffImg },
-  { name: "Engr. Nadir Ali", role: "Fab Lab Engineer & Incharge Fab Lab", icon: FlaskConical, image: nadirImg },
-  { name: "Engr. Aizaz Larik", role: "Lab Engineer", icon: Wrench, image: aizazImg },
-  { name: "Engr. Veer Bhan", role: "Lab Engineer", icon: Wrench, image: veerBhanImg },
-  { name: "Engr. Muhammad Fawad", role: "Lab Engineer · On Leave", icon: Wrench, image: unnamedStaffImg },
-  { name: "Engr. Abdul Majeed", role: "Lab Assistant", icon: Wrench, image: abdulMajeedImg },
-  { name: "Engr. Danyal", role: "Lab Assistant", icon: Wrench, image: unnamedStaffImg },
-];
+import { faculty, staff } from "../../data/facultyStaff.js";
 
 export default function Faculty() {
   return (
@@ -89,7 +30,7 @@ export default function Faculty() {
         </Reveal>
 
         <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
-          {faculty.map((person, index) => (
+          {faculty.slice(0, 6).map((person, index) => (
             <motion.div
               key={person.name}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -119,8 +60,8 @@ export default function Faculty() {
         </div>
 
         <Reveal delay={0.2}>
-          <a
-            href="#"
+          <Link
+            to="/about/faculty-staff"
             className="group mt-12 inline-flex items-center gap-2 rounded-lg border-2 border-[#0a2a5e] px-5 py-2.5 text-sm font-semibold text-[#0a2a5e] transition-colors hover:bg-[#0a2a5e] hover:text-white"
           >
             View All Faculty
@@ -129,7 +70,7 @@ export default function Faculty() {
               strokeWidth={2}
               className="transition-transform duration-200 group-hover:translate-x-0.5"
             />
-          </a>
+          </Link>
         </Reveal>
 
         <div className="mx-auto mt-20 max-w-6xl border-t border-slate-200 bg-[#e9eff5] pt-16 sm:mt-24 sm:pt-20">
@@ -185,8 +126,8 @@ export default function Faculty() {
           </div>
 
           <Reveal delay={0.2}>
-            <a
-              href="#"
+            <Link
+              to="/about/faculty-staff"
               className="group mt-12 inline-flex items-center gap-2 rounded-lg border-2 border-[#0a2a5e] px-5 py-2.5 text-sm font-semibold text-[#0a2a5e] transition-colors hover:bg-[#0a2a5e] hover:text-white"
             >
               View All Staff
@@ -195,7 +136,7 @@ export default function Faculty() {
                 strokeWidth={2}
                 className="transition-transform duration-200 group-hover:translate-x-0.5"
               />
-            </a>
+            </Link>
           </Reveal>
         </div>
       </div>

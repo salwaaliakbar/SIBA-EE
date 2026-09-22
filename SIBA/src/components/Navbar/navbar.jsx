@@ -9,6 +9,7 @@ import {
   BookOpen,
   Library,
   FlaskConical,
+  ExternalLink,
 } from "lucide-react";
 import logo from "../../assets/logo.png";
 
@@ -86,22 +87,21 @@ const navItems = [
     label: "Research",
     dropdown: [
       "Final Year Projects",
-      "SIBA Journel of Technologies"
+      {
+        label: "SIBA Journal of Technologies",
+        to: "https://journal.iba-suk.edu.pk:8089/index.php/sjet/submissions",
+        external: true,
+      },
     ],
   },
   {
     label: "Resources",
-    dropdown: [
-      "CMS",
-      "LMS",
-      "Library",
-      "FAB LAB"
-    ],
+    to: "https://iba-suk.edu.pk/student-resources",
+    external: true,
   },
   {
     label: "Students",
     dropdown: [
-        "Announcements",
       "Internships",
       "Alumni",
       "Students Achievements",
@@ -113,10 +113,10 @@ const navItems = [
 ];
 
 const utilityLinks = [
-  { label: "CMS", icon: GraduationCap, to: "/" },
-  { label: "LMS", icon: BookOpen, to: "/" },
-  { label: "Library", icon: Library, to: "/" },
-  { label: "FAB LAB", icon: FlaskConical, to: "/" },
+  { label: "CMS", icon: GraduationCap, to: "https://pscs.iba-suk.edu.pk/psp/HRCS9/?cmd=login", external: true },
+  { label: "LMS", icon: BookOpen, to: "https://elearning.iba-suk.edu.pk/login/index.php", external: true },
+  { label: "Library", icon: Library, to: "https://library.iba-suk.edu.pk/", external: true },
+  { label: "FAB LAB", icon: FlaskConical, to: "https://www.fablabs.io/labs/fablabsukkur", external: true },
 ];
 
 const aboutSectionLinks = {
@@ -124,6 +124,7 @@ const aboutSectionLinks = {
   "Vision & Mission": "/about/vision-mission",
   "PEOs & PLOs": "/about/peos-plos",
   "Chairman's Message": "/about/chairman-message",
+  "Faculty & Staff": "/about/faculty-staff",
 };
 
 const researchSectionLinks = {
@@ -217,6 +218,7 @@ export default function Navbar() {
     return item.external ? (
       <a {...linkProps} href={item.to} target="_blank" rel="noreferrer">
         <span>{label}</span>
+        <ExternalLink size={13} aria-hidden="true" className="ml-auto shrink-0 opacity-70" />
       </a>
     ) : (
       <Link {...linkProps} to={getItemPath(item)}>
@@ -261,6 +263,7 @@ export default function Navbar() {
     return item.external ? (
       <a {...linkProps} href={item.to} target="_blank" rel="noreferrer">
         {label}
+        <ExternalLink size={14} aria-hidden="true" className="ml-2 inline-block align-[-2px] opacity-70" />
       </a>
     ) : (
       <Link {...linkProps} to={getItemPath(item)}>
@@ -316,14 +319,22 @@ export default function Navbar() {
           <div className="hidden items-center divide-x divide-white/15 lg:flex">
             {utilityLinks.map((link) => {
               const Icon = link.icon;
-              return (
-                <Link
-                  key={link.label}
-                  to={link.to}
-                  className="flex items-center gap-1.5 px-3 text-[11px] font-semibold uppercase tracking-wider text-white/75 transition-colors hover:text-white"
-                >
+              const className = "flex items-center gap-1.5 px-3 text-[11px] font-semibold uppercase tracking-wider text-white/75 transition-colors hover:text-white";
+              const content = (
+                <>
                   <Icon size={13} strokeWidth={2} />
                   {link.label}
+                  {link.external && <ExternalLink size={11} aria-hidden="true" className="opacity-70" />}
+                </>
+              );
+
+              return link.external ? (
+                <a key={link.label} href={link.to} target="_blank" rel="noreferrer" className={className}>
+                  {content}
+                </a>
+              ) : (
+                <Link key={link.label} to={link.to} className={className}>
+                  {content}
                 </Link>
               );
             })}
@@ -362,25 +373,37 @@ export default function Navbar() {
                 onMouseEnter={() => hasDropdown && openDesktopDropdown(item.label)}
                 onMouseLeave={() => hasDropdown && closeDesktopDropdown()}
               >
-                <button
-                  type="button"
-                  onClick={() => hasDropdown ? toggleDropdown(item.label) : navigate(item.label === "Contact" ? "/contact" : "/")}
-                  aria-haspopup={hasDropdown}
-                  aria-expanded={hasDropdown && activeDropdown === item.label}
-                  className="group flex items-center gap-1 rounded-md px-4 py-2 text-[13px] font-semibold uppercase tracking-widest text-white/90 transition-colors duration-150 hover:bg-white/10 hover:text-white"
-                >
-                  <span>{item.label}</span>
+                {item.external ? (
+                  <a
+                    href={item.to}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center gap-1 rounded-md px-4 py-2 text-[13px] font-semibold uppercase tracking-widest text-white/90 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                  >
+                    <span>{item.label}</span>
+                    <ExternalLink size={13} aria-hidden="true" className="opacity-80" />
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => hasDropdown ? toggleDropdown(item.label) : navigate(item.label === "Contact" ? "/contact" : "/")}
+                    aria-haspopup={hasDropdown}
+                    aria-expanded={hasDropdown && activeDropdown === item.label}
+                    className="group flex items-center gap-1 rounded-md px-4 py-2 text-[13px] font-semibold uppercase tracking-widest text-white/90 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                  >
+                    <span>{item.label}</span>
 
-                  {hasDropdown && (
-                    <ChevronDown
-                      size={14}
-                      strokeWidth={2}
-                      className={`transition-transform duration-200 ${
-                        activeDropdown === item.label ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </button>
+                    {hasDropdown && (
+                      <ChevronDown
+                        size={14}
+                        strokeWidth={2}
+                        className={`transition-transform duration-200 ${
+                          activeDropdown === item.label ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                  </button>
+                )}
 
                 {hasDropdown && activeDropdown === item.label && (
                   <div className="absolute left-0 top-full pt-2">
@@ -504,6 +527,17 @@ export default function Navbar() {
                         className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
                       />
                     </button>
+                  ) : item.external ? (
+                    <a
+                      href={item.to}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={closeMobileMenu}
+                      className="block py-4 text-sm font-semibold uppercase tracking-widest text-white"
+                    >
+                      {item.label}
+                      <ExternalLink size={15} aria-hidden="true" className="ml-2 inline-block align-[-2px] opacity-80" />
+                    </a>
                   ) : (
                     <Link
                       to={item.label === "Contact" ? "/contact" : "/"}

@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Reveal from "../shared/reveal.jsx";
 import logo from "../../assets/logo.png";
@@ -11,10 +11,10 @@ const quickLinks = [
 ];
 
 const universityLinks = [
-  { label: "CMS", to: "/" },
-  { label: "LMS", to: "/" },
-  { label: "Library", to: "/" },
-  { label: "FAB LAB", to: "/" },
+  { label: "CMS", to: "https://pscs.iba-suk.edu.pk/psp/HRCS9/?cmd=login", external: true },
+  { label: "LMS", to: "https://elearning.iba-suk.edu.pk/login/index.php", external: true },
+  { label: "Library", to: "https://library.iba-suk.edu.pk/", external: true },
+  { label: "FAB LAB", to: "https://www.fablabs.io/labs/fablabsukkur", external: true },
 ];
 
 const socialLinks = [
@@ -144,12 +144,15 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5">
               {universityLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.to}
-                    className="text-sm text-blue-100/75 transition-colors hover:text-white"
+                  <a
+                    href={link.to}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-blue-100/75 transition-colors hover:text-white"
                   >
                     {link.label}
-                  </Link>
+                    <ExternalLink size={12} aria-hidden="true" className="opacity-70" />
+                  </a>
                 </li>
               ))}
             </ul>
