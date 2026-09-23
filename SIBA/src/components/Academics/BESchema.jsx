@@ -3,134 +3,106 @@ const semesters = [
   {
     label: "Semester 1",
     courses: [
-      [
-        "CSE-111",
-        "Information and Communication Technologies",
-        "Computing",
-        "2+1",
-      ],
-      ["ELE-111", "Workshop Practice", "EE Foundation", "0+1"],
-      ["HUM-101", "Functional English", "Humanities", "3+0"],
-      ["HUM-111/2", "Islamiat", "Natural Science", "2+0"],
-      ["MSC-101", "Calculus and Analytical Geometry", "Natural Science", "3+0"],
-      ["PHY-111", "Applied Physics", "Natural Science", "3+1"],
+      ["CSE-111", "Information and Communication Technologies", "Computing", 2, 1],
+      ["ELE-111", "Workshop Practice", "EE Foundation", 0, 1],
+      ["HUM-101", "Functional English", "Humanities", 3, 0],
+      ["HUM-111/2", "Islamiat", "Natural Science", 2, 0],
+      ["MSC-101", "Calculus and Analytical Geometry", "Natural Science", 3, 0],
+      ["PHY-111", "Applied Physics", "Natural Science", 3, 1],
     ],
-    total: "12 courses / 15 CH",
+    total: [13, 3, 16],
   },
   {
     label: "Semester 2",
     courses: [
-      ["HUM-202", "Communication & Presentation Skills", "Humanities", "3+0"],
-      [
-        "MSC-208",
-        "Linear Algebra & Differential Equations",
-        "Natural Science",
-        "3+0",
-      ],
-      [
-        "HUM-113/4",
-        "Fehm-e-Quran-I / Comparative Religion-I",
-        "Natural Sciences",
-        "0+1",
-      ],
-      ["SSC-101", "Pakistan Studies", "Humanities", "2+0"],
-      ["ELE-121", "Linear Circuit Analysis", "EE Foundation", "3+1"],
-      ["CSE-121", "Programming for Engineers", "Computing", "2+1"],
-      ["CSE-122", "Computer Aided Design", "EE Foundation", "0+1"],
+      ["HUM-202", "Communication & Presentation Skills", "Humanities", 3, 0],
+      ["MSC-208", "Linear Algebra & Differential Equations", "Natural Science", 3, 0],
+      ["HUM-113/4", "Fehm e Quran-I/Comparative Religion-I", "Natural Sciences", 0, 1],
+      ["SSC-101", "Pakistan Studies", "Humanities", 2, 0],
+      ["ELE-121", "Linear Circuit Analysis", "EE Foundation", 3, 1],
+      ["CSE-121", "Programming for Engineers", "Computing", 2, 1],
+      ["CSE-122", "Computer Aided Design", "EE Foundation", 0, 1],
     ],
-    total: "13 courses / 17 CH",
+    total: [13, 4, 17],
   },
   {
     label: "Semester 3",
     courses: [
-      ["MSC-202", "Multivariate Calculus", "Natural Science", "3+0"],
-      ["ESE-211", "Digital Logic Design", "EE Foundation", "3+1"],
-      ["ELE-211", "Electrical Network Analysis", "EE Foundation", "3+1"],
-      ["ESE-212", "Electronic Devices and Circuits", "EE Foundation", "3+1"],
-      [
-        "HUM-211/2",
-        "Fehm-e-Quran-II / Comparative Religion-II",
-        "Natural Sciences",
-        "0+1",
-      ],
-      ["CSE-211", "Object Oriented Programming", "Computing", "2+1"],
+      ["MSC-202", "Multivariate Calculus", "Natural Science", 3, 0],
+      ["ESE-211", "Digital Logic Design", "EE Foundation", 3, 1],
+      ["ELE-211", "Electrical Network Analysis", "EE Foundation", 3, 1],
+      ["ESE-212", "Electronic Devices and Circuits", "EE Foundation", 3, 1],
+      ["HUM-211/2", "Fehm e Quran-II/Comparative Religion-II", "Humanities", 0, 1],
+      ["CSE-211", "Object Oriented Programming", "Computing", 2, 1],
     ],
-    total: "14 courses / 19 CH",
+    total: [14, 5, 19],
   },
   {
     label: "Semester 4",
     courses: [
-      ["MSC-207", "Complex Variables & Transforms", "Natural Science", "3+0"],
-      ["ELE-221", "Electromagnetics Field Theory", "Core (Breadth)", "3+0"],
-      ["SSC-102", "Ideology and Constitution of Pakistan", "Humanities", "2+0"],
-      ["ESE-221", "Embedded Systems", "EE Foundation", "3+1"],
-      [
-        "MGT-221",
-        "Engineering Economics & Management",
-        "Management Science",
-        "3+0",
-      ],
-      ["CSC-221", "Computer Communication Network", "IDEE-I", "3+1"],
+      ["MSC-207", "Complex Variables & Transforms", "Natural Science", 3, 0],
+      ["ELE-221", "Electromagnetics Field Theory", "Core (Breadth)", 3, 0],
+      ["SSC-102", "Ideology and Constitution of Pakistan", "Humanities", 2, 0],
+      ["ESE-221", "Embedded Systems", "EE Foundation", 3, 1],
+      ["MGT-221", "Engineering Economics & Management", "Management Science", 3, 0],
+      ["CSC-221", "Computer Communication Network", "IDEE-1", 3, 1],
     ],
-    total: "17 courses / 21 CH",
+    total: [17, 2, 19],
   },
   {
     label: "Semester 5",
     courses: [
-      ["MSC-203", "Probability & Statistics", "EE Foundation", "3+0"],
-      [
-        "ELE-311/ESE-311",
-        "Elective-I: Power Generation / Electronic Circuit Design",
-        "Core (Breadth)",
-        "3+1",
-      ],
-      ["ELE-312", "Signals and Systems", "EE Foundation", "3+1"],
-      ["ELE-222", "Electrical Machines", "Core (Breadth)", "3+1"],
-      ["ELE-313", "Instrumentation & Measurement", "EE Foundation", "3+1"],
+      ["MSC-203", "Probability & Statistics", "EE Foundation", 3, 0],
+      ["ELE-311/ESE-311", "Elective-I", "Core (Breadth)", 3, 1],
+      ["ELE-312", "Signals and Systems", "EE Foundation", 3, 1],
+      ["ELE-222", "Electrical Machines", "Core (Breadth)", 3, 1],
+      ["ELE-313", "Instrumentation & Measurement", "EE Foundation", 3, 1],
     ],
-    total: "15 courses / 19 CH",
+    total: [15, 4, 19],
   },
   {
     label: "Semester 6",
     courses: [
-      ["ESE-321", "Elective-II", "Core (Breadth)", "3+1"],
-      ["ELE-322", "Communication Systems", "Core (Breadth)", "3+1"],
-      ["CSE-321", "Artificial Intelligence", "IDEE-II", "3+0"],
-      ["ELE-323", "Control Systems", "Core (Breadth)", "3+1"],
+      ["ESE-321", "Elective II", "Core (Breadth)", 3, 1],
+      ["ELE-322", "Communication Systems", "Core (Breadth)", 3, 1],
+      ["CSE-321", "Artificial Intelligence", "IDEE-II", 3, 0],
+      ["ELE-323", "Control Systems", "Core (Breadth)", 3, 1],
     ],
-    total: "15 courses / 19 CH",
+    total: [15, 4, 19],
   },
   {
     label: "Semester 7",
     courses: [
-      ["ELE-411/ESE-411", "Elective-III", "Elective-III", "3+1"],
-      ["HUM-411", "Technical Writing", "Humanities", "2+0"],
-      ["ELE-412/ESE-412", "Elective-IV", "Core (Depth)", "3+1"],
-      ["ELE-413/ESE-413", "Elective-V", "Core (Depth)", "3+0"],
-      ["CSE-411", "Elective-VI", "Core (Depth)", "0+1"],
-      ["ELE-419", "Final Year Project-I", "FYP", "0+2"],
+      ["ELE-411/ESE-411", "Elective III", "Elective - III", 3, 1],
+      ["HUM-411", "Technical Writing", "Humanities", 2, 0],
+      ["ELE-412/ESE-412", "Elective IV", "Core (Depth)", 3, 1],
+      ["ELE-413/ESE-413", "Elective V", "Core (Depth)", 3, 0],
+      ["CSE-411", "Eletive VI", "Core (Depth)", 0, 1],
+      ["ELE-419", "Final Year Project-I", "FYP", 0, 2],
     ],
-    total: "11 courses / 16 CH",
+    total: [11, 5, 16],
   },
   {
     label: "Semester 8",
     courses: [
-      ["ELE-421/ESE-421", "Elective-VII", "Core (Depth)", "3+1"],
-      ["ELE-422/ESE-422", "Elective-VIII", "Core (Depth)", "3+1"],
-      ["MGT-421", "Project Management", "Management Science", "2+0"],
-      ["ELE-429", "Final Year Project-II", "FYP", "0+4"],
+      ["ELE-421/ESE-421", "Elective VII", "Core (Depth)", 3, 1],
+      ["ELE-422/ESE-422", "Electie VIII", "Core (Depth)", 3, 1],
+      ["MGT-421", "Project Management", "Management Science", 2, 0],
+      ["ELE-429", "Final Year Project-II", "FYP", 0, 4],
     ],
-    total: "8 courses / 14 CH",
+    total: [8, 6, 14],
   },
 ];
+
+const overall = { teaching: 104, lab: 32, grand: 136 };
 
 const prerequisites = [
   ["MSC-202", "Multivariate Calculus", "MSC-208"],
   ["ELE-312", "Electrical Machines", "ELE-211"],
   [
     "ELE-311/ESE-311",
-    "Power Generation / Electronic Circuit Design",
-    "ELE-222 / ESE-211",
+    "Power Generation/Electronic Circuit Design",
+    "ELE-222/ESE-211",
   ],
 ];
 
@@ -189,7 +161,7 @@ export default function BESchema() {
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-[#071f47] px-5 py-4 text-white sm:px-6">
                 <h3 className="font-serif text-2xl font-bold">{label}</h3>
                 <span className="font-mono text-xs uppercase tracking-wider text-amber-300">
-                  {total}
+                  Total CHs: {total[0]} + {total[1]} = {total[2]}
                 </span>
               </div>
               <div className="overflow-x-auto">
@@ -202,12 +174,15 @@ export default function BESchema() {
                         Knowledge area
                       </th>
                       <th className="px-5 py-4 text-center font-semibold">
-                        Teaching + lab CHs
+                        CHs teaching
+                      </th>
+                      <th className="px-5 py-4 text-center font-semibold">
+                        CHs labs
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {courses.map(([code, subject, area, hours]) => (
+                    {courses.map(([code, subject, area, teaching, lab]) => (
                       <tr
                         key={code}
                         className="border-b border-slate-100 last:border-0"
@@ -220,16 +195,49 @@ export default function BESchema() {
                         </td>
                         <td className="px-5 py-4 text-slate-500">{area}</td>
                         <td className="px-5 py-4 text-center font-mono text-xs text-slate-600">
-                          {hours}
+                          {teaching}
+                        </td>
+                        <td className="px-5 py-4 text-center font-mono text-xs text-slate-600">
+                          {lab}
                         </td>
                       </tr>
                     ))}
                   </tbody>
+                  <tfoot>
+                    <tr className="border-t border-slate-200 bg-slate-50 font-semibold text-[#071f47]">
+                      <td className="px-5 py-4" colSpan={3}>
+                        Total CHs
+                      </td>
+                      <td className="px-5 py-4 text-center font-mono text-xs">
+                        {total[0]}
+                      </td>
+                      <td className="px-5 py-4 text-center font-mono text-xs">
+                        {total[1]}
+                      </td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-8 grid gap-px overflow-hidden border border-slate-200 bg-slate-200 sm:grid-cols-3">
+          {[
+            ["Overall CHs (Teaching)", overall.teaching],
+            ["Overall CHs (Labs)", overall.lab],
+            ["Grand Credit Hours (CHs)", overall.grand],
+          ].map(([name, value]) => (
+            <div key={name} className="bg-white px-5 py-5">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                {name}
+              </p>
+              <p className="mt-2 font-serif text-3xl font-bold text-[#071f47]">
+                {value}
+              </p>
+            </div>
+          ))}
+        </Reveal>
       </section>
 
       <section className="mx-auto max-w-[1440px] px-5 py-10 sm:px-6 lg:px-6 lg:py-14">

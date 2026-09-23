@@ -8,8 +8,7 @@ import Reveal from "../shared/reveal.jsx";
 const specializations = [
 	"Telecommunication Engineering",
 	"Electronics Engineering",
-	"Power Engineering",
-	"Computer Systems Engineering",
+	"Power Engineering"
 ];
 
 export default function AboutDep() {

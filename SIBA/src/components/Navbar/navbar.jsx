@@ -21,8 +21,7 @@ const navItems = [
       "Vision & Mission",
       "PEOs & PLOs",
       "Chairman's Message",
-      "Faculty & Staff",
-      "Facilities",
+      "Faculty & Staff"
     ],
   },
   {
@@ -102,7 +101,7 @@ const navItems = [
   {
     label: "Students",
     dropdown: [
-      "Internships",
+      { label: "Internships", to: "/students/internships" },
       "Alumni",
       "Students Achievements",
     ],

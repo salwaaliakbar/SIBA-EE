@@ -17,6 +17,7 @@ import PhDElectricalBatch2025 from "../components/Academics/PhD_Electrical/Batch
 import PhDElectricalBatch2026Onward from "../components/Academics/PhD_Electrical/Batch2026&Onward.jsx";
 import PhDElectricalUpto2024 from "../components/Academics/PhD_Electrical/Upto2024.jsx";
 import FYPs from "../components/Research/FYPs.jsx";
+import InternshipFeedbackSurvey from "../components/Students/InternshipFeedbackSurvey.jsx";
 
 export default function AppRoutes() {
   return (
@@ -29,6 +30,7 @@ export default function AppRoutes() {
       <Route path="/about/faculty-staff" element={<FacultyStaff />} />
       <Route path="/contact" element={<ContactUs />} />
       <Route path="/research/final-year-projects" element={<FYPs />} />
+      <Route path="/students/internships" element={<InternshipFeedbackSurvey />} />
       <Route path="/academics/undergraduate/be-electrical-engineering" element={<BESchema />} />
       <Route path="/academics/undergraduate/be-electrical-engineering/course-schema" element={<BESchema />} />
       <Route path="/academics/lab-infrastructure" element={<LabInfrastructure />} />

@@ -21,12 +21,10 @@ import jamshedImg from "../assets/faculty/official/jamshed.jpg";
 import azizAltafImg from "../assets/faculty/official/aziz-altaf.jpg";
 import waqasImg from "../assets/faculty/official/waqas.jpg";
 import afshanImg from "../assets/faculty/official/afshan.jpg";
-import wardaImg from "../assets/faculty/official/warda.jpg";
 import afaqueImg from "../assets/faculty/official/afaque.jpg";
 import fidaImg from "../assets/faculty/official/fida.jpg";
 import jahangeerImg from "../assets/faculty/official/jahangeer.jpg";
 import mudassirImg from "../assets/faculty/official/mudassir.jpg";
-import qasimImg from "../assets/faculty/official/qasim.jpg";
 import shoaibImg from "../assets/faculty/official/shoaib.jpg";
 import raheemImg from "../assets/faculty/official/raheem.jpg";
 import shakeelImg from "../assets/faculty/official/shakeel.jpg";
@@ -59,12 +57,10 @@ export const faculty = [
   { name: "Dr. Aziz Altaf Khwaja", title: "Assistant Professor", subtitle: "", image: azizAltafImg },
   { name: "Dr. Muhammad Waqas", title: "Assistant Professor", subtitle: "", image: waqasImg },
   { name: "Afshan Shah", title: "Lecturer", subtitle: "", image: afshanImg },
-  { name: "Miss. Syeda Warda Taqdees", title: "Lecturer (Study Leave)", subtitle: "", image: wardaImg },
   { name: "Dr. Afaque Manzoor Soomro", title: "Assistant Professor (Study Leave)", subtitle: "", image: afaqueImg },
   { name: "Dr. Fida Hussain Memon", title: "Assistant Professor", subtitle: "", image: fidaImg },
   { name: "Jahangeer Badar Soomro", title: "Assistant Professor", subtitle: "", image: jahangeerImg },
   { name: "Dr. Hafiz Mudassir Munir", title: "Assistant Professor", subtitle: "", image: mudassirImg },
-  { name: "Dr. Qasim Ali", title: "Assistant Professor", subtitle: "", image: qasimImg },
   { name: "Shoaib Ahmed Shaikh", title: "Lecturer", subtitle: "", image: shoaibImg },
   { name: "Dr. Abdul Raheem", title: "Assistant Professor (Study Leave)", subtitle: "", image: raheemImg },
   { name: "Shakeel Ahmed Jiskani", title: "Lecturer (Study Leave)", subtitle: "", image: shakeelImg },

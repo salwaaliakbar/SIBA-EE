@@ -26,7 +26,7 @@ export default function ChairmanMessage() {
 							Chairman&apos;s Message
 						</h1>
 						<p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-							A message from the Head of the Department of Electrical Engineering at Sukkur IBA University.
+							A message from the Chairman of the Department of Electrical Engineering at Sukkur IBA University.
 						</p>
 					</Reveal>
 				</div>
@@ -42,7 +42,7 @@ export default function ChairmanMessage() {
 							From the department
 						</p>
 						<h2 className="mt-3 font-serif text-3xl font-bold text-[#071f47] sm:text-4xl">
-							Meet our Head of Department
+							Meet our Chairman of Department
 						</h2>
 					</div>
 
