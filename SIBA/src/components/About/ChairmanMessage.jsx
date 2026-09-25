@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Mail, MessageCircle, Smartphone } from "lucide-react";
 import sharjeelImage from "../../assets/faculty/sharjeel.jpg";
 import Reveal from "../shared/reveal.jsx";
@@ -61,14 +62,14 @@ export default function ChairmanMessage() {
 									{message}
 								</p>
 								<div className="mt-6 space-y-3 text-sm font-semibold text-[#2878bd]">
-									<a className="flex items-center gap-3 hover:text-[#071f47]" href="tel:4192">
+									<Link className="flex items-center gap-3 hover:text-[#071f47]" to="tel:4192">
 										<Smartphone size={18} className="text-[#0a2a5e]" />
 										<span>Ext : 4192</span>
-									</a>
-									<a className="flex items-center gap-3 break-all hover:text-[#071f47]" href="mailto:Sharjeel.afridi@iba-suk.edu.pk">
+									</Link>
+									<Link className="flex items-center gap-3 break-all hover:text-[#071f47]" to="mailto:Sharjeel.afridi@iba-suk.edu.pk">
 										<Mail size={18} className="shrink-0 text-[#0a2a5e]" />
 										<span>Sharjeel.afridi@iba-suk.edu.pk</span>
-									</a>
+									</Link>
 								</div>
 							</div>
 						</div>

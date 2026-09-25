@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowRight, PhoneCall } from "lucide-react";
 import Reveal from "../shared/reveal.jsx";
 
@@ -35,8 +36,8 @@ export default function Cta() {
         </Reveal>
 
         <Reveal delay={0.15} className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href="#"
+          <Link
+            to="#"
             className="group inline-flex items-center gap-2 rounded-lg bg-amber-400 px-6 py-3 text-sm font-semibold text-[#0a2a5e] transition-colors hover:bg-amber-300"
           >
             Apply Now
@@ -45,15 +46,15 @@ export default function Cta() {
               strokeWidth={2}
               className="transition-transform duration-200 group-hover:translate-x-0.5"
             />
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="#"
             className="inline-flex items-center gap-2 rounded-lg border-2 border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
           >
             <PhoneCall size={16} strokeWidth={2} />
             Contact Us
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>

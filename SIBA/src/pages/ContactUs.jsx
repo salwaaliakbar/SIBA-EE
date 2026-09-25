@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Globe, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
@@ -42,9 +43,9 @@ export default function ContactUs() {
 							<p className="mt-5 text-sm leading-7 text-blue-100/75">Visit, call, or email the department office. We are here to help you find the right information.</p>
 							<div className="mt-10 space-y-6 text-sm text-blue-100/80">
 								<div className="flex gap-4"><MapPin className="mt-0.5 shrink-0 text-amber-300" size={20} strokeWidth={1.8} /><p>ETO Office, AB-3, Sukkur IBA University, Sukkur, Sindh, Pakistan</p></div>
-								<div className="flex items-center gap-4"><Phone className="shrink-0 text-amber-300" size={20} strokeWidth={1.8} /><a className="transition hover:text-white" href="tel:+92715644059">+ 92 71 5644059</a></div>
-								<div className="flex items-center gap-4"><Mail className="shrink-0 text-amber-300" size={20} strokeWidth={1.8} /><a className="break-all transition hover:text-white" href="mailto:eto@iba-suk.edu.pk">eto@iba-suk.edu.pk</a></div>
-								<div className="flex items-center gap-4"><Globe className="shrink-0 text-amber-300" size={20} strokeWidth={1.8} /><a className="transition hover:text-white" href="https://ee.iba-suk.edu.pk/contact/contactus.html#" target="_blank" rel="noreferrer">ee.iba-suk.edu.pk</a></div>
+								<div className="flex items-center gap-4"><Phone className="shrink-0 text-amber-300" size={20} strokeWidth={1.8} /><Link className="transition hover:text-white" to="tel:+92715644059">+ 92 71 5644059</Link></div>
+								<div className="flex items-center gap-4"><Mail className="shrink-0 text-amber-300" size={20} strokeWidth={1.8} /><Link className="break-all transition hover:text-white" to="mailto:eto@iba-suk.edu.pk">eto@iba-suk.edu.pk</Link></div>
+								<div className="flex items-center gap-4"><Globe className="shrink-0 text-amber-300" size={20} strokeWidth={1.8} /><Link className="transition hover:text-white" to="https://ee.iba-suk.edu.pk/contact/contactus.html#" target="_blank" rel="noreferrer">ee.iba-suk.edu.pk</Link></div>
 							</div>
 						</div>
 					</Reveal>

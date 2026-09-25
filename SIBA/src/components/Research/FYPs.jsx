@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Reveal from "../shared/reveal.jsx";
 import { ArrowUpRight, BookOpen, Check, ChevronRight, FileText, PlayCircle } from "lucide-react";
 
@@ -134,7 +135,7 @@ export default function FYPs() {
 						<div className="rounded-xl border border-slate-200/80 bg-white/90 p-5 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.35)]">
 							<div className="flex items-center justify-between border-b border-slate-100 pb-4"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">Explore</p><h2 className="mt-1 font-serif text-2xl font-bold text-[#071f47]">FYP archives</h2></div><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 text-amber-700"><FileText size={17} /></span></div>
 							<nav className="mt-4 space-y-2" aria-label="FYP archive years">
-								<a href="#fall-2021" className="flex items-center gap-3 rounded-lg border border-amber-200/80 bg-amber-50/80 px-3 py-3 text-sm font-semibold text-amber-950"><Check size={16} className="shrink-0 text-amber-600" /><span className="flex-1">FYP Fall-2021</span><ChevronRight size={16} className="text-amber-600" /></a>
+								<Link to="#fall-2021" className="flex items-center gap-3 rounded-lg border border-amber-200/80 bg-amber-50/80 px-3 py-3 text-sm font-semibold text-amber-950"><Check size={16} className="shrink-0 text-amber-600" /><span className="flex-1">FYP Fall-2021</span><ChevronRight size={16} className="text-amber-600" /></Link>
 								<div className="flex items-center gap-3 rounded-lg border border-slate-100 bg-slate-50/70 px-3 py-3 text-sm text-slate-400"><span className="h-4 w-4 shrink-0 rounded-full border-2 border-slate-300" /><span className="flex-1">FYP Fall-2022</span><span className="text-[10px] font-bold uppercase tracking-wider">Soon</span></div>
 							</nav>
 						</div>
@@ -145,10 +146,10 @@ export default function FYPs() {
 							<p className="mt-3 text-sm leading-6 text-slate-600">Browse the department resources for project planning, documentation, and presentations.</p>
 							<div className="mt-5 space-y-2">
 								{resources.map(({ label, description, href, icon: Icon }) => (
-									<a key={label} href={href} target="_blank" rel="noreferrer" className="group flex items-center gap-3 rounded-lg border border-sky-100/90 bg-white/75 px-3 py-3 transition hover:border-sky-200 hover:bg-white">
+									<Link key={label} to={href} target="_blank" rel="noreferrer" className="group flex items-center gap-3 rounded-lg border border-sky-100/90 bg-white/75 px-3 py-3 transition hover:border-sky-200 hover:bg-white">
 										<span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-sky-700"><Icon size={16} /></span>
 										<span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-slate-700">{label}</span><span className="mt-0.5 block text-xs text-slate-500">{description}</span></span><ArrowUpRight size={15} className="shrink-0 text-slate-400 transition group-hover:text-sky-600" />
-									</a>
+									</Link>
 								))}
 							</div>
 						</div>

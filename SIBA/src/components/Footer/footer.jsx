@@ -103,16 +103,16 @@ export default function Footer() {
 
             <div className="mt-5 flex items-center gap-2">
               {socialLinks.map((social) => (
-                <a
+                <Link
                   key={social.label}
-                  href={social.href}
+                  to={social.href}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={social.label}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-white/40 hover:text-white"
                 >
                   {social.icon}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -144,15 +144,15 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5">
               {universityLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.to}
+                  <Link
+                    to={link.to}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 text-sm text-blue-100/75 transition-colors hover:text-white"
                   >
                     {link.label}
                     <ExternalLink size={12} aria-hidden="true" className="opacity-70" />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -163,22 +163,22 @@ export default function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-white">
               Contact
             </p>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-4 space-y-3 font-bold">
               <li className="flex items-start gap-2.5 text-sm text-blue-100/75">
                 <MapPin size={16} strokeWidth={1.8} className="mt-0.5 shrink-0 text-white" />
                 ETO Office, AB-3, Sukkur IBA University, Sukkur, Sindh, Pakistan
               </li>
               <li className="flex items-center gap-2.5 text-sm text-blue-100/75">
                 <Phone size={16} strokeWidth={1.8} className="shrink-0 text-white" />
-                <a href="tel:+92715644059" className="transition-colors hover:text-white">
+                <Link to="tel:+92715644059" className="transition-colors hover:text-white">
                   +92 71 5644059
-                </a>
+                </Link>
               </li>
               <li className="flex items-center gap-2.5 text-sm text-blue-100/75">
                 <Mail size={16} strokeWidth={1.8} className="shrink-0 text-white" />
-                <a href="mailto:eto@iba-suk.edu.pk" className="transition-colors hover:text-white">
+                <Link to="mailto:eto@iba-suk.edu.pk" className="transition-colors hover:text-white">
                   eto@iba-suk.edu.pk
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

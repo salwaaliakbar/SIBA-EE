@@ -10,6 +10,7 @@ import {
   Library,
   FlaskConical,
   ExternalLink,
+  FileText,
 } from "lucide-react";
 import logo from "../../assets/logo.png";
 
@@ -94,9 +95,29 @@ const navItems = [
     ],
   },
   {
-    label: "Resources",
-    to: "https://iba-suk.edu.pk/student-resources",
-    external: true,
+    label: "Lab & Resources",
+    alignRight: true,
+    dropdown: [
+      { heading: "Labs" },
+      { label: "Lab Infrastructure", to: "/academics/lab-infrastructure" },
+      { label: "FAB LAB", to: "https://www.fablabs.io/labs/fablabsukkur", external: true },
+      { heading: "Student Portals" },
+      { label: "CMS", to: "https://pscs.iba-suk.edu.pk/psp/HRCS9/?cmd=login", external: true },
+      { label: "LMS", to: "https://elearning.iba-suk.edu.pk/", external: true },
+      { label: "Library", to: "https://library.iba-suk.edu.pk/", external: true },
+      { label: "Class Timetable", to: "http://192.168.0.4:200/timetable/Home/classtimetable/", external: true },
+      { heading: "Forms & Policies" },
+      { label: "Withdraw Form", to: "", external: true },
+      {
+        label: "Policies",
+        children: [
+          { label: "Fee Refund Policy", to: "https://iba-suk.edu.pk/Content/pdf/home/SIBA-Student-Fee-Refund-Policy.pdf", external: true },
+          { label: "Examination Regulations", to: "https://iba-suk.edu.pk/Content/pdf/student-resources/ExaminationsRegulations%202024.pdf", external: true },
+          { label: "Harassment Policy", to: "https://iba-suk.edu.pk/Content/pdf/student-resources/Harassment%20Policy-REVISED%202025-Protection%20Against%20Sexual%20Harassment%20in%20HEIs.pdf", external: true },
+          { label: "Policy for Students with Disabilities", to: "https://iba-suk.edu.pk/Content/pdf/student-resources/HEC%20Policy%20for%20Students%20with%20Disabilities.pdf", external: true },
+        ],
+      },
+    ],
   },
   {
     label: "Students",
@@ -130,7 +151,22 @@ const researchSectionLinks = {
   "Final Year Projects": "/research/final-year-projects",
 };
 
+const megaHeadingIcons = {
+  Labs: FlaskConical,
+  "Student Portals": GraduationCap,
+  "Forms & Policies": FileText,
+};
+
+// Groups a flat dropdown list into columns, starting a new column at each heading.
+const groupByHeading = (items) => items.reduce((columns, item) => {
+  if (item.heading) return [...columns, { heading: item.heading, items: [] }];
+  columns[columns.length - 1]?.items.push(item);
+  return columns;
+}, []);
+
 const getItemLabel = (item) => (typeof item === "string" ? item : item.label);
+
+const getExternalProps = (item) => (item.external ? { target: "_blank", rel: "noreferrer" } : {});
 
 const getItemPath = (item) => {
   if (typeof item !== "string") return item.to;
@@ -178,7 +214,19 @@ export default function Navbar() {
     setActiveSubmenus([]);
   };
 
-  const renderDesktopItems = (items, parentKey = "") => items.map((item) => {
+  const renderDesktopItems = (items, parentKey = "", openLeft = false) => items.map((item, index) => {
+    if (item.divider) {
+      return <div key={`${parentKey}divider-${index}`} className="mx-2 my-1.5 border-t border-slate-200" />;
+    }
+
+    if (item.heading) {
+      return (
+        <p key={`${parentKey}${item.heading}`} className="px-3 pb-1 pt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-[#0a2a5e] first:pt-1.5">
+          {item.heading}
+        </p>
+      );
+    }
+
     const label = getItemLabel(item);
     const itemKey = `${parentKey}${label}`;
     const hasChildren = Boolean(item.children?.length);
@@ -200,44 +248,52 @@ export default function Navbar() {
             <ChevronDown size={14} className={`-rotate-90 transition-transform ${isOpen ? "rotate-0" : ""}`} />
           </button>
           {isOpen && (
-            <div className="absolute left-full top-0 z-10 w-64 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl shadow-slate-900/20">
-              {renderDesktopItems(item.children, `${itemKey}/`)}
+            <div className={`absolute ${openLeft ? "right-full" : "left-full"} top-0 z-10 w-64 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl shadow-slate-900/20`}>
+              {renderDesktopItems(item.children, `${itemKey}/`, openLeft)}
             </div>
           )}
         </div>
       );
     }
 
-    const linkProps = {
-      key: itemKey,
-      className: "group flex items-center rounded-lg px-3 py-2.5 text-[13px] normal-case tracking-normal text-slate-600 transition-all duration-150 hover:bg-slate-50 hover:pl-4 hover:text-[#0a2a5e]",
-      onClick: closeMobileMenu,
-    };
-
-    return item.external ? (
-      <a {...linkProps} href={item.to} target="_blank" rel="noreferrer">
+    return (
+      <Link
+        key={itemKey}
+        to={getItemPath(item)}
+        {...getExternalProps(item)}
+        onClick={closeMobileMenu}
+        className="group flex items-center rounded-lg px-3 py-2.5 text-[13px] normal-case tracking-normal text-slate-600 transition-all duration-150 hover:bg-slate-50 hover:pl-4 hover:text-[#0a2a5e]"
+      >
         <span>{label}</span>
-        <ExternalLink size={13} aria-hidden="true" className="ml-auto shrink-0 opacity-70" />
-      </a>
-    ) : (
-      <Link {...linkProps} to={getItemPath(item)}>
-        <span>{label}</span>
+        {item.external && <ExternalLink size={13} aria-hidden="true" className="ml-auto shrink-0 opacity-70" />}
       </Link>
     );
   });
 
-  const renderMobileItems = (items, parentKey = "") => items.map((item) => {
+  const renderMobileItems = (items, parentKey = "") => items.map((item, index) => {
+    if (item.divider) {
+      return <div key={`${parentKey}/divider-${index}`} className="mx-3 my-1.5 border-t border-white/10" />;
+    }
+
+    if (item.heading) {
+      return (
+        <p key={`${parentKey}/${item.heading}`} className="px-3 pb-1 pt-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-200/70 first:pt-1">
+          {item.heading}
+        </p>
+      );
+    }
+
     const label = getItemLabel(item);
     const itemKey = `${parentKey}/${label}`;
     const hasChildren = Boolean(item.children?.length);
-    const isOpen = activeSubmenu === itemKey;
+    const isOpen = activeSubmenu === itemKey || Boolean(activeSubmenu?.startsWith(`${itemKey}/`));
 
     if (hasChildren) {
       return (
         <div key={itemKey}>
           <button
             type="button"
-            onClick={() => setActiveSubmenu((current) => current === itemKey ? null : itemKey)}
+            onClick={() => setActiveSubmenu(isOpen ? parentKey : itemKey)}
             aria-expanded={isOpen}
             className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm text-blue-100/80 transition hover:bg-white/10 hover:text-white"
           >
@@ -253,20 +309,16 @@ export default function Navbar() {
       );
     }
 
-    const linkProps = {
-      key: itemKey,
-      className: "block rounded-lg px-3 py-2.5 text-sm normal-case tracking-normal text-blue-100/70 transition hover:bg-white/10 hover:text-white",
-      onClick: closeMobileMenu,
-    };
-
-    return item.external ? (
-      <a {...linkProps} href={item.to} target="_blank" rel="noreferrer">
+    return (
+      <Link
+        key={itemKey}
+        to={getItemPath(item)}
+        {...getExternalProps(item)}
+        onClick={closeMobileMenu}
+        className="block rounded-lg px-3 py-2.5 text-sm normal-case tracking-normal text-blue-100/70 transition hover:bg-white/10 hover:text-white"
+      >
         {label}
-        <ExternalLink size={14} aria-hidden="true" className="ml-2 inline-block align-[-2px] opacity-70" />
-      </a>
-    ) : (
-      <Link {...linkProps} to={getItemPath(item)}>
-        {label}
+        {item.external && <ExternalLink size={14} aria-hidden="true" className="ml-2 inline-block align-[-2px] opacity-70" />}
       </Link>
     );
   });
@@ -327,12 +379,8 @@ export default function Navbar() {
                 </>
               );
 
-              return link.external ? (
-                <a key={link.label} href={link.to} target="_blank" rel="noreferrer" className={className}>
-                  {content}
-                </a>
-              ) : (
-                <Link key={link.label} to={link.to} className={className}>
+              return (
+                <Link key={link.label} to={link.to} {...getExternalProps(link)} className={className}>
                   {content}
                 </Link>
               );
@@ -373,15 +421,15 @@ export default function Navbar() {
                 onMouseLeave={() => hasDropdown && closeDesktopDropdown()}
               >
                 {item.external ? (
-                  <a
-                    href={item.to}
+                  <Link
+                    to={item.to}
                     target="_blank"
                     rel="noreferrer"
                     className="group flex items-center gap-1 rounded-md px-4 py-2 text-[13px] font-semibold uppercase tracking-widest text-white/90 transition-colors duration-150 hover:bg-white/10 hover:text-white"
                   >
                     <span>{item.label}</span>
                     <ExternalLink size={13} aria-hidden="true" className="opacity-80" />
-                  </a>
+                  </Link>
                 ) : (
                   <button
                     type="button"
@@ -405,7 +453,7 @@ export default function Navbar() {
                 )}
 
                 {hasDropdown && activeDropdown === item.label && (
-                  <div className="absolute left-0 top-full pt-2">
+                  <div className={`absolute ${item.alignRight ? "right-0" : "left-0"} top-full pt-2`}>
                     {item.label === "Academics" ? (
                       <div className="w-205 max-w-[calc(100vw-40px)] rounded-xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/20">
                         <div className="mb-4 h-0.5 w-10 rounded-full bg-[#0a2a5e]" />
@@ -480,10 +528,40 @@ export default function Navbar() {
                           Lab Infrastructure
                         </Link>
                       </div>
+                    ) : item.label === "Lab & Resources" ? (
+                      <div className="w-180 max-w-[calc(100vw-40px)] rounded-xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/20">
+                        <div className="mb-4 h-0.5 w-10 rounded-full bg-[#0a2a5e]" />
+                        <div className="grid gap-6 md:grid-cols-3">
+                          {groupByHeading(item.dropdown).map((column) => {
+                            const Icon = megaHeadingIcons[column.heading];
+
+                            return (
+                              <div key={column.heading}>
+                                <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#0a2a5e]">
+                                  {Icon && <Icon size={16} />}
+                                  {column.heading}
+                                </div>
+                                <div className="space-y-0.5">
+                                  {column.items.map((link) => (
+                                    link.children ? (
+                                      renderDesktopItems([link], `${column.heading}/`, true)
+                                    ) : (
+                                      <Link key={link.label} to={link.to} {...getExternalProps(link)} onClick={closeMobileMenu} className="flex items-center gap-2 rounded-lg px-3 py-2 text-[13px] text-slate-600 transition hover:bg-slate-50 hover:text-[#0a2a5e]">
+                                        <span>{link.label}</span>
+                                        {link.external && <ExternalLink size={12} aria-hidden="true" className="ml-auto shrink-0 opacity-60" />}
+                                      </Link>
+                                    )
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
                     ) : (
                       <div className="w-64 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl shadow-slate-900/20">
                         <div className="mb-1 h-0.5 w-8 rounded-full bg-[#0a2a5e]" />
-                        {renderDesktopItems(item.dropdown)}
+                        {renderDesktopItems(item.dropdown, "", item.alignRight)}
                       </div>
                     )}
                   </div>
@@ -527,8 +605,8 @@ export default function Navbar() {
                       />
                     </button>
                   ) : item.external ? (
-                    <a
-                      href={item.to}
+                    <Link
+                      to={item.to}
                       target="_blank"
                       rel="noreferrer"
                       onClick={closeMobileMenu}
@@ -536,7 +614,7 @@ export default function Navbar() {
                     >
                       {item.label}
                       <ExternalLink size={15} aria-hidden="true" className="ml-2 inline-block align-[-2px] opacity-80" />
-                    </a>
+                    </Link>
                   ) : (
                     <Link
                       to={item.label === "Contact" ? "/contact" : "/"}
@@ -569,6 +647,7 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     to={link.to}
+                    {...getExternalProps(link)}
                     onClick={closeMobileMenu}
                     className="flex items-center justify-center gap-1.5 rounded-xl border border-white/15 px-2 py-3 text-xs font-medium text-white/80 transition hover:border-white/40 hover:text-white"
                   >
