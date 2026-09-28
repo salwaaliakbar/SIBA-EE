@@ -1,19 +1,19 @@
-import fabLabImg from "../../assets/labs/fab-lab.png";
-import philLabImg from "../../assets/labs/phil-lab.png";
-import cleanLabImg from "../../assets/labs/clean-lab.png";
-import powerSystemsLabImg from "../../assets/labs/power-systems-lab.png";
-import electricalMachinesLabImg from "../../assets/labs/electrical-machines-lab.png";
-import computerLab1Img from "../../assets/labs/computer-lab-1.png";
-import computerLab2Img from "../../assets/labs/computer-lab-2.png";
-import communicationLabImg from "../../assets/labs/communication-systems-lab.png";
-import controlLabImg from "../../assets/labs/control-lab.png";
-import powerElectronicsLabImg from "../../assets/labs/power-electronics-lab.png";
-import fluidMechanicsLabImg from "../../assets/labs/fluid-mechanics-lab.png";
-import capstoneLabImg from "../../assets/labs/capstone-project-lab.png";
-import projectLabImg from "../../assets/labs/project-lab.png";
-import meResearchLabImg from "../../assets/labs/me-research-lab.png";
-import electronicsCircuitLabImg from "../../assets/labs/electronics-circuit-lab.png";
-import electricalCircuitLabImg from "../../assets/labs/electrical-circuit-lab.png";
+import fabLabImg from "../../assets/labs/fab-lab.jpg";
+import philLabImg from "../../assets/labs/phil-lab.jpg";
+import cleanLabImg from "../../assets/labs/clean-lab.jpg";
+import powerSystemsLabImg from "../../assets/labs/power-systems-lab.jpg";
+import electricalMachinesLabImg from "../../assets/labs/electrical-machines-lab.jpg";
+import computerLab1Img from "../../assets/labs/computer-lab-1.jpg";
+import computerLab2Img from "../../assets/labs/computer-lab-2.jpg";
+import communicationLabImg from "../../assets/labs/communication-systems-lab.jpg";
+import controlLabImg from "../../assets/labs/control-lab.jpg";
+import powerElectronicsLabImg from "../../assets/labs/power-electronics-lab.jpg";
+import fluidMechanicsLabImg from "../../assets/labs/fluid-mechanics-lab.jpg";
+import capstoneLabImg from "../../assets/labs/capstone-project-lab.jpg";
+import projectLabImg from "../../assets/labs/project-lab.jpg";
+import meResearchLabImg from "../../assets/labs/me-research-lab.jpg";
+import electronicsCircuitLabImg from "../../assets/labs/electronics-circuit-lab.jpg";
+import electricalCircuitLabImg from "../../assets/labs/electrical-circuit-lab.jpg";
 
 export const laboratories = [
   { name: "Digital Fabrication Lab (Fab Lab)", image: fabLabImg },
