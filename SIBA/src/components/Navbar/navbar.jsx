@@ -76,6 +76,15 @@ const navItems = [
   {
     label: "Admissions",
     dropdown: [
+      { label: "Admissions Overview", to: "/admissions" },
+      { label: "Admission Timeline", to: "/admissions#timeline" },
+      { label: "Fee Structure (PDF)", to: "https://www.iba-suk.edu.pk/Content/pdf/admissions/Fee%20Structure%20Main%20Campus%202025-26.pdf", external: true },
+      { label: "Apply Online", to: "https://applyadmission.iba-suk.edu.pk/application/index.php", external: true },
+      {
+        label: "Admission Procedure (PDF)",
+        to: "https://www.iba-suk.edu.pk/Content/pdf/admissions/Admission%20Proceedures.pdf",
+        external: true,
+      },
       {
         label: "Admission Policy (PDF)",
         to: "https://ee.iba-suk.edu.pk/downloads/SIBAU_Admispolicy-July%2014%20%202023.pdf",

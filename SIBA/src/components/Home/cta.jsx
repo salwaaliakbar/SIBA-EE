@@ -37,7 +37,7 @@ export default function Cta() {
 
         <Reveal delay={0.15} className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
-            to="#"
+            to="/admissions"
             className="group inline-flex items-center gap-2 rounded-lg bg-amber-400 px-6 py-3 text-sm font-semibold text-[#0a2a5e] transition-colors hover:bg-amber-300"
           >
             Apply Now
@@ -49,7 +49,7 @@ export default function Cta() {
           </Link>
 
           <Link
-            to="#"
+            to="/contact"
             className="inline-flex items-center gap-2 rounded-lg border-2 border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
           >
             <PhoneCall size={16} strokeWidth={2} />
