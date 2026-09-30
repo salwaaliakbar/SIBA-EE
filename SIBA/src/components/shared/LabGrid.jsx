@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import { laboratories } from "./labs.jsx";
 
 export default function LabGrid({ columnsClassName = "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" }) {
@@ -30,7 +29,6 @@ export default function LabGrid({ columnsClassName = "grid-cols-2 sm:grid-cols-3
 
           <div className="flex min-h-[92px] items-center justify-between gap-3 p-4">
             <h3 className="font-serif text-lg font-bold leading-snug text-[#0a2a5e]">{lab.name}</h3>
-            <ArrowUpRight size={18} className="shrink-0 text-amber-500 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </div>
         </motion.article>
       ))}

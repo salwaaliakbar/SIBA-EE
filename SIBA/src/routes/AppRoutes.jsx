@@ -19,6 +19,7 @@ import PhDElectricalUpto2024 from "../components/Academics/PhD_Electrical/Upto20
 import FYPs from "../components/Research/FYPs.jsx";
 import InternshipFeedbackSurvey from "../components/Students/InternshipFeedbackSurvey.jsx";
 import Achievements from "../components/Students/Achievements.jsx";
+import AlumniSurvey from "../components/Students/AlumniSurvey.jsx";
 import Admissions from "../components/Admissions/Admissions.jsx";
 
 export default function AppRoutes() {
@@ -34,6 +35,7 @@ export default function AppRoutes() {
       <Route path="/admissions" element={<Admissions />} />
       <Route path="/research/final-year-projects" element={<FYPs />} />
       <Route path="/students/achievements" element={<Achievements />} />
+      <Route path="/students/alumni" element={<AlumniSurvey />} />
       <Route path="/students/internships" element={<InternshipFeedbackSurvey />} />
       <Route path="/academics/undergraduate/be-electrical-engineering" element={<BESchema />} />
       <Route path="/academics/undergraduate/be-electrical-engineering/course-schema" element={<BESchema />} />

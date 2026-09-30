@@ -131,7 +131,7 @@ const navItems = [
     label: "Students",
     dropdown: [
       { label: "Internships", to: "/students/internships" },
-      "Alumni",
+      { label: "Alumni", to: "/students/alumni" },
       { label: "Student & Alumni Achievements", to: "/students/achievements" },
     ],
   },
