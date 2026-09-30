@@ -6,40 +6,53 @@ import {
   ArrowRight,
   CalendarDays,
   Users,
-  Rocket,
-  Globe2,
+  BookOpen,
+  GraduationCap,
+  Handshake,
 } from "lucide-react";
-import iabImg from "../../assets/hero/iab.png";
-import fypImg from "../../assets/hero/fyp.png";
-import globalVillageImg from "../../assets/hero/global-village.png";
+import iabMeetingImg from "../../assets/hero/pic 1.jpg";
+import bosMeetingImg from "../../assets/hero/pic 2.jpg";
+import studentSessionImg from "../../assets/hero/pic 3.jpg";
+import industryVisitImg from "../../assets/hero/pic 4.jpg";
+
+const FB_POST_URL = "https://www.facebook.com/ee.sibau/posts/";
 
 const slides = [
   {
     tag: "Event",
+    icon: Handshake,
+    title: "4th Industrial Advisory Board Meeting",
+    description:
+      "Faculty and industry leaders met to strengthen academia–industry collaboration and align the curriculum with evolving industry needs.",
+    image: iabMeetingImg,
+    link: `${FB_POST_URL}pfbid0wAqWUnrNmA2Nea4YAJmRUsF9GTrE9aDH59MatC83nTqJMP7Lp7upSabJsGWHcAwZl`,
+  },
+  {
+    tag: "Academics",
+    icon: BookOpen,
+    title: "12th Board of Studies Meeting",
+    description:
+      "The Board of Studies of the Department of Electrical Engineering reviewed and refined the curriculum to keep our programs current and outcome-focused.",
+    image: bosMeetingImg,
+    link: `${FB_POST_URL}pfbid029GQJBVdUmUVP4rKcUrZY4qtMs6Looze4mXd4LntCBi1UeBabt2pQTaAe1D8pCEjnl`,
+  },
+  {
+    tag: "Students",
+    icon: GraduationCap,
+    title: "Student Success Session",
+    description:
+      "Students were guided on making the most of their bachelor's degree — from CGPA and scholarships to internships and beyond.",
+    image: studentSessionImg,
+    link: `${FB_POST_URL}pfbid02taLv54HgCNyxaJyDc135WKb2H9ZYSVuKELTv7WKcWLRJyVjzX442GYCAbTuyusGBl`,
+  },
+  {
+    tag: "Event",
     icon: Users,
-    title: "Industrial Advisory Board Meeting 2026",
+    title: "Distinguished Guests at the EE Department",
     description:
-      "Faculty and industry leaders convened to align the department's curriculum with evolving industry needs and emerging technologies.",
-    date: "February 2026",
-    image: iabImg,
-  },
-  {
-    tag: "Student Projects",
-    icon: Rocket,
-    title: "Final Year Projects Exhibition",
-    description:
-      "Graduating students showcased innovative engineering solutions to real-world problems, judged by academia and industry professionals.",
-    date: "January 2026",
-    image: fypImg,
-  },
-  {
-    tag: "Campus Life",
-    icon: Globe2,
-    title: "Global Village 2026",
-    description:
-      "Students and faculty celebrated cultural diversity through exhibitions, performances, and collaborative activities across campus.",
-    date: "December 2025",
-    image: globalVillageImg,
+      "Faculty and students welcomed guests to the Department of Electrical Engineering, fostering stronger connections with industry and academia.",
+    image: industryVisitImg,
+    link: `${FB_POST_URL}pfbid02diTWybvKW3rjEgMT45DZPM4BJcQ4EaiW9Kd9YCGdoMCMhSyJn3QbCjs89wG8z55yl`,
   },
 ];
 
@@ -67,7 +80,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative h-[620px] w-full overflow-hidden bg-[#071b3d] sm:h-[660px] lg:h-[620px]"
+      className="relative h-[660px] w-full overflow-hidden bg-[#071b3d] sm:h-[700px] lg:h-[740px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       role="region"
@@ -84,15 +97,15 @@ export default function Hero() {
           className="absolute inset-0"
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-bottom"
             style={{ backgroundImage: `url(${slide.image})` }}
             role="img"
             aria-label={slide.title}
           />
           <div className="absolute inset-0 bg-linear-to-r from-[#061936]/95 via-[#061936]/65 to-[#061936]/20" />
-          <div className="absolute inset-0 bg-linear-to-t from-[#061936]/75 via-transparent to-[#061936]/15" />
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-[#061936]/60 to-transparent" />
 
-          <div className="relative mx-auto flex h-full max-w-[1440px] items-end px-5 pb-46 pt-12 sm:px-6 sm:pb-50 lg:px-10 lg:pb-46">
+          <div className="relative mx-auto flex h-full max-w-[1440px] items-start px-5 pt-14 sm:px-6 sm:pt-16 lg:px-10 lg:pt-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,13 +127,17 @@ export default function Hero() {
                 {slide.description}
               </p>
 
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-white/65">
-                <CalendarDays size={14} strokeWidth={2} />
-                {slide.date}
-              </div>
+              {slide.date && (
+                <div className="mt-4 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-white/65">
+                  <CalendarDays size={14} strokeWidth={2} />
+                  {slide.date}
+                </div>
+              )}
 
-              <button
-                type="button"
+              <a
+                href={slide.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group mt-7 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-[#0a2a5e] transition-colors hover:bg-amber-400"
               >
                 Read More
@@ -129,7 +146,7 @@ export default function Hero() {
                   strokeWidth={2}
                   className="transition-transform duration-200 group-hover:translate-x-0.5"
                 />
-              </button>
+              </a>
             </motion.div>
           </div>
         </motion.div>

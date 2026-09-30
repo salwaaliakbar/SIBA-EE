@@ -39,8 +39,7 @@ const navItems = [
                 to: "/academics/undergraduate/be-electrical-engineering/course-schema",
               },
             ],
-          },
-          { label: "Lab Infrastructure", to: "/academics/lab-infrastructure" },
+          }
         ],
       },
       {
@@ -133,7 +132,7 @@ const navItems = [
     dropdown: [
       { label: "Internships", to: "/students/internships" },
       "Alumni",
-      "Students Achievements",
+      { label: "Student & Alumni Achievements", to: "/students/achievements" },
     ],
   },
    {
@@ -528,14 +527,6 @@ export default function Navbar() {
                             </div>
                           </div>
                         </div>
-                        <Link
-                          to="/academics/lab-infrastructure"
-                          onClick={closeMobileMenu}
-                          className="mt-5 flex items-center gap-2 border-t border-slate-200 pt-4 text-[13px] font-semibold text-[#0a2a5e] transition hover:text-amber-600"
-                        >
-                          <FlaskConical size={16} />
-                          Lab Infrastructure
-                        </Link>
                       </div>
                     ) : item.label === "Lab & Resources" ? (
                       <div className="w-180 max-w-[calc(100vw-40px)] rounded-xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/20">
