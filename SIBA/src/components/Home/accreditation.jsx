@@ -1,9 +1,8 @@
-import { ArrowRight } from "lucide-react";
 import Reveal from "../shared/reveal.jsx";
 
 const stats = [
   { value: "Level-2", label: "PEC Accreditation Status" },
-  { value: "2024", label: "Accredited Since" },
+  { value: "2015", label: "Accredited Since" },
   { value: "100%", label: "Curriculum Compliance" },
 ];
 
@@ -57,19 +56,6 @@ export default function Accreditation() {
           ))}
         </Reveal>
 
-        <Reveal delay={0.25}>
-          <button
-            type="button"
-            className="group mt-10 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-[#0a2a5e] transition-colors hover:bg-blue-50"
-          >
-            View Accreditation Certificate
-            <ArrowRight
-              size={16}
-              strokeWidth={2}
-              className="transition-transform duration-200 group-hover:translate-x-0.5"
-            />
-          </button>
-        </Reveal>
       </div>
     </section>
   );
