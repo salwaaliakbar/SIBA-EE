@@ -22,6 +22,7 @@ import {
   admissionsOffice,
   cycleMonths,
   eligibility,
+  pathwayGroups,
   pathways,
   posters,
   requiredDocuments,
@@ -37,6 +38,11 @@ const isOpen = (isoDate) => new Date(`${isoDate}T23:59:59`) >= new Date();
 const inRange = (index, [from, to]) => index >= from && index <= to;
 
 const externalProps = { target: "_blank", rel: "noreferrer" };
+
+const groupedPathways = pathwayGroups.map((group) => ({
+  ...group,
+  pathways: group.ids.map((id) => pathways.find((pathway) => pathway.id === id)),
+}));
 
 const quickLinks = [
   { label: "Admission Procedure", note: "Eligibility, selection & enrolment (PDF)", to: admissionLinks.procedure, icon: ClipboardList },
@@ -66,23 +72,28 @@ function CycleCalendar() {
           ))}
         </div>
 
-        {pathways.map((pathway) => (
-          <a
-            key={pathway.id}
-            href={`#${pathway.id}`}
-            className="group grid grid-cols-[220px_repeat(12,minmax(0,1fr))] items-center gap-1 border-t border-slate-100 py-2"
-          >
-            <span className="pr-3 text-left text-sm font-semibold leading-5 text-[#071f47] group-hover:text-amber-600">
-              {pathway.name.replace(/ \(.*\)$/, "")}
-            </span>
-            {cycleMonths.map((month, index) => {
-              let cellClass = "bg-slate-100";
-              if (inRange(index, pathway.test)) cellClass = "bg-[#0a2a5e]";
-              else if (inRange(index, pathway.apply)) cellClass = "bg-amber-300";
-              else if (inRange(index, pathway.classes)) cellClass = "bg-emerald-500/80";
-              return <span key={month} className={`h-7 ${cellClass}`} />;
-            })}
-          </a>
+        {groupedPathways.map((group) => (
+          <div key={group.title}>
+            <p className="border-t border-slate-200 pb-1 pt-4 text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-600">{group.title}</p>
+            {group.pathways.map((pathway) => (
+              <a
+                key={pathway.id}
+                href={`#${pathway.id}`}
+                className="group grid grid-cols-[220px_repeat(12,minmax(0,1fr))] items-center gap-1 border-t border-slate-100 py-2"
+              >
+                <span className="pr-3 text-left text-sm font-semibold leading-5 text-[#071f47] group-hover:text-amber-600">
+                  {pathway.name.replace(/ \(.*\)$/, "")}
+                </span>
+                {cycleMonths.map((month, index) => {
+                  let cellClass = "bg-slate-100";
+                  if (inRange(index, pathway.test)) cellClass = "bg-[#0a2a5e]";
+                  else if (inRange(index, pathway.apply)) cellClass = "bg-amber-300";
+                  else if (inRange(index, pathway.classes)) cellClass = "bg-emerald-500/80";
+                  return <span key={month} className={`h-7 ${cellClass}`} />;
+                })}
+              </a>
+            ))}
+          </div>
         ))}
 
         <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 border-t border-slate-200 pt-4 text-xs font-medium text-slate-600">
@@ -101,62 +112,76 @@ function PathwayCard({ pathway, index }) {
 
   return (
     <Reveal delay={Math.min(index * 0.04, 0.2)}>
-      <article id={pathway.id} className="scroll-mt-28 bg-white p-6 shadow-sm sm:p-8">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="bg-[#0a2a5e]/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0a2a5e]">{pathway.level}</span>
-          <span className="bg-amber-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-700">{pathway.route}</span>
-          {open && (
-            <span className="inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-700">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" /> Open · closes {formatDate(latest.lastDate)}
-            </span>
+      <article id={pathway.id} className="grid scroll-mt-28 overflow-hidden bg-white shadow-sm lg:grid-cols-[minmax(0,1fr)_minmax(340px,420px)]">
+        <div className="p-6 sm:p-8">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="bg-[#0a2a5e]/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0a2a5e]">{pathway.level}</span>
+            <span className="bg-amber-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-700">{pathway.route}</span>
+            {open && (
+              <span className="inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" /> Open · closes {formatDate(latest.lastDate)}
+              </span>
+            )}
+          </div>
+
+          <h3 className="mt-4 font-serif text-2xl font-bold text-[#071f47]">{pathway.name}</h3>
+          <p className="mt-1 text-sm font-medium text-slate-500">{pathway.programs}</p>
+
+          <p className="mt-5 inline-flex items-start gap-2 text-sm font-semibold text-[#0a2a5e]">
+            <CalendarDays size={17} strokeWidth={1.8} className="mt-0.5 shrink-0 text-amber-600" />
+            Expected window: {pathway.window}
+          </p>
+
+          <ul className="mt-5 space-y-2.5">
+            {pathway.highlights.map((point) => (
+              <li key={point} className="flex gap-3 text-sm leading-6 text-slate-700">
+                <CheckCircle2 size={17} strokeWidth={1.8} className="mt-0.5 shrink-0 text-amber-500" />
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          {pathway.link && (
+            <Link to={pathway.link.url} {...externalProps} className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a2a5e] hover:text-amber-600">
+              {pathway.link.label} <ExternalLink size={14} />
+            </Link>
           )}
         </div>
 
-        <h3 className="mt-4 font-serif text-2xl font-bold text-[#071f47]">{pathway.name}</h3>
-        <p className="mt-1 text-sm font-medium text-slate-500">{pathway.programs}</p>
-
-        <p className="mt-5 inline-flex items-start gap-2 text-sm font-semibold text-[#0a2a5e]">
-          <CalendarDays size={17} strokeWidth={1.8} className="mt-0.5 shrink-0 text-amber-600" />
-          Expected window: {pathway.window}
-        </p>
-
-        <ul className="mt-5 space-y-2.5">
-          {pathway.highlights.map((point) => (
-            <li key={point} className="flex gap-3 text-sm leading-6 text-slate-700">
-              <CheckCircle2 size={17} strokeWidth={1.8} className="mt-0.5 shrink-0 text-amber-500" />
-              {point}
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-6 overflow-x-auto">
-          <table className="w-full min-w-[480px] border-collapse text-left text-sm">
-            <thead>
-              <tr className="bg-slate-50 text-[11px] uppercase tracking-wider text-slate-500">
-                <th className="px-3 py-2.5 font-semibold">Recent cycle</th>
-                <th className="px-3 py-2.5 font-semibold">Last date to apply</th>
-                <th className="px-3 py-2.5 font-semibold">Admission test</th>
-                <th className="px-3 py-2.5 font-semibold">Classes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pathway.cycles.map((cycle) => (
-                <tr key={cycle.label} className="border-t border-slate-100">
-                  <td className="px-3 py-2.5 font-semibold text-[#071f47]">{cycle.label}</td>
-                  <td className="px-3 py-2.5 text-slate-700">{formatDate(cycle.lastDate)}</td>
-                  <td className="px-3 py-2.5 text-slate-700">{cycle.test}</td>
-                  <td className="px-3 py-2.5 text-slate-700">{cycle.classes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {pathway.link && (
-          <Link to={pathway.link.url} {...externalProps} className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a2a5e] hover:text-amber-600">
-            {pathway.link.label} <ExternalLink size={14} />
-          </Link>
-        )}
+        <aside className="border-t border-slate-100 bg-slate-50/80 p-6 sm:p-8 lg:border-l lg:border-t-0">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">Recent cycles</p>
+          <div className="mt-4 space-y-4">
+            {[...pathway.cycles].reverse().map((cycle, cycleIndex) => {
+              const isLatest = cycleIndex === 0;
+              return (
+                <div
+                  key={cycle.label}
+                  className={`border-l-4 bg-white p-4 shadow-sm ${isLatest ? "border-amber-400" : "border-slate-200"}`}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="font-serif text-lg font-bold text-[#071f47]">{cycle.label}</p>
+                    {isLatest && (
+                      <span className="bg-[#0a2a5e] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">Latest</span>
+                    )}
+                  </div>
+                  <dl className="mt-3 space-y-2 text-sm">
+                    {[
+                      { label: "Apply by", value: formatDate(cycle.lastDate), icon: CalendarDays },
+                      { label: "Admission test", value: cycle.test, icon: ClipboardList },
+                      { label: "Classes", value: cycle.classes, icon: GraduationCap },
+                    ].map(({ label, value, icon: Icon }) => (
+                      <div key={label} className="flex items-center gap-3">
+                        <Icon size={15} strokeWidth={1.8} className="shrink-0 text-amber-600" />
+                        <dt className="w-28 shrink-0 text-slate-500">{label}</dt>
+                        <dd className="font-semibold text-[#071f47]">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              );
+            })}
+          </div>
+        </aside>
       </article>
     </Reveal>
   );
@@ -212,7 +237,7 @@ function PosterGallery() {
 
   return (
     <>
-      <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {posters.map((poster, index) => (
           <Reveal key={poster.title} delay={Math.min(index * 0.04, 0.2)}>
             <button type="button" onClick={() => setActiveIndex(index)} className="group block w-full bg-white text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
@@ -234,7 +259,7 @@ function PosterGallery() {
 
 function Sidebar() {
   return (
-    <aside className="space-y-6 lg:sticky lg:top-28">
+    <aside className="space-y-6">
       <div className="relative overflow-hidden bg-[#071f47] p-7 text-white">
         <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full border border-white/10" />
         <div className="relative">
@@ -314,9 +339,10 @@ export default function Admissions() {
         </div>
       </section>
 
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-14 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,1fr)_340px] lg:px-10">
-        <div className="min-w-0 space-y-20">
-          <section id="timeline" className="scroll-mt-28">
+      <div className="mx-auto max-w-[1440px] space-y-20 px-5 py-14 sm:px-6 sm:py-20 lg:px-10">
+        {/* Only the timeline sits beside the sidebar; everything after it uses the full width. */}
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <section id="timeline" className="min-w-0 scroll-mt-28">
             <Reveal>
               <SectionHeading eyebrow="Admission calendar" title="Expected timeline">
                 Based on the 2025 and 2026 admission cycles. Exact dates change every year, so always confirm with the official
@@ -328,6 +354,10 @@ export default function Admissions() {
             </Reveal>
           </section>
 
+          <Sidebar />
+        </div>
+
+        <div className="min-w-0 space-y-20">
           <section id="pathways" className="scroll-mt-28">
             <Reveal>
               <SectionHeading eyebrow="Ways to join" title="Admission pathways">
@@ -335,9 +365,19 @@ export default function Admissions() {
                 STHP or NTHP) where a GPA of 2.2 or above leads to degree admission.
               </SectionHeading>
             </Reveal>
-            <div className="mt-8 space-y-6">
-              {pathways.map((pathway, index) => (
-                <PathwayCard key={pathway.id} pathway={pathway} index={index} />
+            <div className="mt-8 space-y-12">
+              {groupedPathways.map((group) => (
+                <div key={group.title}>
+                  <Reveal className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-l-4 border-amber-400 pl-4">
+                    <h3 className="font-serif text-2xl font-bold text-[#0a2a5e]">{group.title}</h3>
+                    <p className="text-sm font-medium text-slate-500">{group.subtitle}</p>
+                  </Reveal>
+                  <div className="mt-5 space-y-6">
+                    {group.pathways.map((pathway, index) => (
+                      <PathwayCard key={pathway.id} pathway={pathway} index={index} />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </section>
@@ -407,8 +447,6 @@ export default function Admissions() {
             <PosterGallery />
           </section>
         </div>
-
-        <Sidebar />
       </div>
     </main>
   );

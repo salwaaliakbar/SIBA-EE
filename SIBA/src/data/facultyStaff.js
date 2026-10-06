@@ -9,13 +9,10 @@ import abdulAzizImg from "../assets/faculty/official/abdul-aziz.jpg";
 import asimImg from "../assets/faculty/official/asim.jpg";
 import baseerImg from "../assets/faculty/official/baseer.jpg";
 import ahmedImg from "../assets/faculty/official/ahmed.jpg";
-import aliHassanImg from "../assets/faculty/official/ali-hassan.jpg";
-import mirImg from "../assets/faculty/official/mir.jpg";
 import fayazImg from "../assets/faculty/official/fayaz.jpg";
 import kashifImg from "../assets/faculty/official/kashif.jpg";
 import ghulamAbbasImg from "../assets/faculty/official/ghulam-abbas.jpg";
 import haiderImg from "../assets/faculty/official/haider.jpg";
-import irfanImg from "../assets/faculty/official/irfan.jpg";
 import sohailImg from "../assets/faculty/official/sohail.jpg";
 import jamshedImg from "../assets/faculty/official/jamshed.jpg";
 import azizAltafImg from "../assets/faculty/official/aziz-altaf.jpg";
@@ -45,23 +42,20 @@ export const faculty = [
   { name: "Dr. Muhammad Asim Ali", title: "Associate Professor", subtitle: "", image: asimImg },
   { name: "Dr. Abdul Baseer Buriro", title: "Assistant Professor & FYP Coordinator", subtitle: "", image: baseerImg },
   { name: "Dr. Ahmed Ali Shah", title: "Associate Professor (Lien)", subtitle: "", image: ahmedImg },
-  { name: "Dr. Ali Hassan Sodhro", title: "Assistant Professor (Study Leave)", subtitle: "", image: aliHassanImg },
-  { name: "Mir Muhammad Lodhro", title: "Assistant Professor (Study Leave)", subtitle: "", image: mirImg },
   { name: "M. Fayyaz Uddin", title: "Assistant Professor", subtitle: "", image: fayazImg },
   { name: "Dr.Engr. Kashif Hussain", title: "Assistant Professor", subtitle: "", image: kashifImg },
   { name: "Dr. Ghulam Abbas Lashari", title: "Assistant Professor", subtitle: "", image: ghulamAbbasImg },
   { name: "Dr. Khwaja Haider Ali", title: "Assistant Professor", subtitle: "", image: haiderImg },
-  { name: "Irfan Ahmed", title: "Assistant Professor", subtitle: "", image: irfanImg },
   { name: "Engr. Sohail Ahmed Soomro", title: "Assistant Professor (Study Leave)", subtitle: "", image: sohailImg },
-  { name: "Dr. Jamshed Ahmed Ansari", title: "Assistant Professor", subtitle: "", image: jamshedImg },
-  { name: "Dr. Aziz Altaf Khwaja", title: "Assistant Professor", subtitle: "", image: azizAltafImg },
+  { name: "Dr. Jamshed Ahmed Ansari", title: "Assistant Professor & BE Coordinator", subtitle: "", image: jamshedImg },
+  { name: "Dr. Aziz Altaf Khwaja", title: "Assistant Professor & Head of Engineering Labs", subtitle: "", image: azizAltafImg },
   { name: "Dr. Muhammad Waqas", title: "Assistant Professor", subtitle: "", image: waqasImg },
   { name: "Afshan Shah", title: "Lecturer", subtitle: "", image: afshanImg },
   { name: "Dr. Afaque Manzoor Soomro", title: "Assistant Professor (Study Leave)", subtitle: "", image: afaqueImg },
-  { name: "Dr. Fida Hussain Memon", title: "Assistant Professor", subtitle: "", image: fidaImg },
+  { name: "Dr. Fida Hussain Memon", title: "Assistant Professor & Head of FAB Lab", subtitle: "", image: fidaImg },
   { name: "Jahangeer Badar Soomro", title: "Assistant Professor", subtitle: "", image: jahangeerImg },
   { name: "Dr. Hafiz Mudassir Munir", title: "Assistant Professor", subtitle: "", image: mudassirImg },
-  { name: "Shoaib Ahmed Shaikh", title: "Lecturer", subtitle: "", image: shoaibImg },
+  { name: "Dr. Shoaib Ahmed Shaikh", title: "Lecturer & ILC Coordinator", subtitle: "", image: shoaibImg },
   { name: "Dr. Abdul Raheem", title: "Assistant Professor (Study Leave)", subtitle: "", image: raheemImg },
   { name: "Shakeel Ahmed Jiskani", title: "Lecturer (Study Leave)", subtitle: "", image: shakeelImg },
 ];

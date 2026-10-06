@@ -69,27 +69,6 @@ export const pathways = [
     ],
   },
   {
-    id: "phd",
-    name: "PhD Electrical Engineering",
-    level: "Postgraduate",
-    route: "Graduate",
-    programs: "PhD Electrical Engineering",
-    window: "Announced August–September · SIBAU-GAT in September–October",
-    apply: [4, 5],
-    test: [5, 6],
-    classes: [9, 9],
-    highlights: [
-      "18 years of education with a research thesis in a relevant field, minimum 70% marks or 3.0 CGPA.",
-      "NTS GAT-Subjective or HEC ETS-Subjective (60%), GRE-Subjective, or SIBAU-GAT (Subjective).",
-      "Discipline-specific sample paper is published with the advertisement.",
-      "Rs. 25,000 monthly stipend for PhD students (PhD 2026 advertisement).",
-    ],
-    cycles: [
-      { label: "PhD 2026", lastDate: "2025-09-15", test: "September 20, 2025", classes: "January 2026" },
-      { label: "PhD 2027", lastDate: "2026-10-20", test: "October 31, 2026", classes: "To be announced" },
-    ],
-  },
-  {
     id: "foundation-semester",
     name: "Foundation Semester (Regular)",
     level: "Undergraduate",
@@ -174,6 +153,34 @@ export const pathways = [
       { label: "Spring 2026", lastDate: "2025-12-08", test: "December 13, 2025", classes: "January 2026" },
     ],
   },
+  {
+    id: "phd",
+    name: "PhD Electrical Engineering",
+    level: "Postgraduate",
+    route: "Graduate",
+    programs: "PhD Electrical Engineering",
+    window: "Announced August–September · SIBAU-GAT in September–October",
+    apply: [4, 5],
+    test: [5, 6],
+    classes: [9, 9],
+    highlights: [
+      "18 years of education with a research thesis in a relevant field, minimum 70% marks or 3.0 CGPA.",
+      "NTS GAT-Subjective or HEC ETS-Subjective (60%), GRE-Subjective, or SIBAU-GAT (Subjective).",
+      "Discipline-specific sample paper is published with the advertisement.",
+      "Rs. 25,000 monthly stipend for PhD students (PhD 2026 advertisement).",
+    ],
+    cycles: [
+      { label: "PhD 2026", lastDate: "2025-09-15", test: "September 20, 2025", classes: "January 2026" },
+      { label: "PhD 2027", lastDate: "2026-10-20", test: "October 31, 2026", classes: "To be announced" },
+    ],
+  },
+];
+
+// Pathway cards and the timeline are grouped by degree, in this order.
+export const pathwayGroups = [
+  { title: "Bachelor's", subtitle: "BE Electrical Engineering", ids: ["direct-test-phase-1", "direct-test-phase-2", "foundation-semester", "nthp", "sthp"] },
+  { title: "Master's", subtitle: "ME Electrical · ME Electronics & Communication", ids: ["me"] },
+  { title: "PhD", subtitle: "PhD Electrical Engineering", ids: ["phd"] },
 ];
 
 export const eligibility = [
@@ -231,9 +238,9 @@ export const requiredDocuments = {
 export const posters = [
   { title: "Undergraduate Admissions 2025 — Phase I", caption: "Direct aptitude test · Main Campus", image: ugPhase1Poster, pdf: `${DOCS_BASE}/20250510072614922.pdf` },
   { title: "Undergraduate Admissions 2025 — Phase II", caption: "Direct aptitude test · Main Campus", image: ugPhase2Poster, pdf: `${DOCS_BASE}/20250616062349406.pdf` },
-  { title: "Sindh Talent Hunt Program 2025", caption: "STHP foundation semester", image: sthpPoster, pdf: `${DOCS_BASE}/20241110084535731.pdf` },
-  { title: "OGDCL National Talent Hunt Program", caption: "NTHP · classes from January 2025", image: nthpPoster, pdf: `${DOCS_BASE}/20240906134208179.pdf` },
   { title: "Foundation Semester 2025", caption: "Regular foundation route", image: foundationPoster, pdf: `${DOCS_BASE}/20241214094313278.pdf` },
+  { title: "OGDCL National Talent Hunt Program", caption: "NTHP · classes from January 2025", image: nthpPoster, pdf: `${DOCS_BASE}/20240906134208179.pdf` },
+  { title: "Sindh Talent Hunt Program 2025", caption: "STHP foundation semester", image: sthpPoster, pdf: `${DOCS_BASE}/20241110084535731.pdf` },
   { title: "Graduate Programs — Spring 2025", caption: "ME Electrical · ME Electronics & Communication", image: mePoster, pdf: `${DOCS_BASE}/20241104052342331.pdf` },
   { title: "PhD Programme 2026", caption: "Announced August 2025", image: phdPoster, pdf: `${DOCS_BASE}/20250811110929229.pdf` },
 ];
