@@ -2,7 +2,7 @@ import Reveal from "../shared/reveal.jsx";
 
 const stats = [
   { value: "Level-2", label: "PEC Accreditation Status" },
-  { value: "2015", label: "Accredited Since" },
+  { value: "2015 Batch", label: "Accredited Since" },
   { value: "100%", label: "Curriculum Compliance" },
 ];
 
